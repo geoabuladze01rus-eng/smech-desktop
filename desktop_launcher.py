@@ -86,6 +86,11 @@ def self_test() -> int:
             if thread is not None:
                 thread.join(timeout=5)
             listener.close()
+            # SQLAlchemy keeps pooled SQLite file handles open on Windows.
+            # Dispose before TemporaryDirectory removes the test database.
+            from workspace_api import store as workspace_store
+            if workspace_store is not None:
+                workspace_store.engine.dispose()
 
 
 
