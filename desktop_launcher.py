@@ -61,8 +61,7 @@ def self_test() -> int:
     import tempfile
     from urllib.request import urlopen
     from desktop_runtime import reserve_port, start_local_server
-    with tempfile.TemporaryDirectory(prefix='smech-native-test-',
-                                      ignore_cleanup_errors=(sys.platform == 'win32')) as temp:
+    with tempfile.TemporaryDirectory(prefix='smech-native-test-') as temp:
         prepare_desktop_environment(Path(temp))
         from app import app
         from pdfio import parse_pdf

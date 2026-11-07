@@ -44,8 +44,9 @@ jobs:
         if: runner.os == 'Windows'
         shell: pwsh
         run: |
-          & .\dist\Smech\Smech.exe --self-test
-          if ($LASTEXITCODE -ne 0) { throw 'Сборка не прошла smoke-test' }
+          $exe = (Resolve-Path '.\dist\Smech\Smech.exe').Path
+          $process = Start-Process -FilePath $exe -ArgumentList '--self-test' -Wait -PassThru
+          if ($process.ExitCode -ne 0) { throw "Smoke-test failed (Windows): $($process.ExitCode)" }
       - name: Smoke-test packaged application — macOS
         if: runner.os == 'macOS'
         run: ./dist/Smech.app/Contents/MacOS/Smech --self-test
