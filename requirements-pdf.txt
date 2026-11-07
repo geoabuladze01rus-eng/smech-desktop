@@ -1,0 +1,5 @@
+-r requirements.txt
+pdfplumber>=0.11,<1
+pypdfium2>=4.28,<6
+# Для OCR сканов дополнительно: pip install -r requirements-ocr.txt
+Pillow>=10,<13

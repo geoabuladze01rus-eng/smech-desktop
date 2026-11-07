@@ -1,0 +1,5 @@
+-r requirements-pdf.txt
+pytesseract>=0.3.10,<1
+Pillow>=10,<13
+opencv-python-headless>=4.8,<5
+# Требуется внешний исполняемый Tesseract OCR с rus и eng.
