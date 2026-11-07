@@ -36,7 +36,7 @@ def build():
     if sys.platform == 'darwin':
         cmd.extend(['--osx-bundle-identifier', 'ru.smech.desktop'])
     cmd.append(str(ROOT / 'desktop_launcher.py'))
-    print('Система:', platform.platform(), flush=True)
+    print('Platform:', platform.platform(), flush=True)
     subprocess.run(cmd, cwd=ROOT, check=True)
     if sys.platform == 'win32':
         dest = ROOT / 'dist' / 'Smech' / 'Smech.exe'
@@ -44,7 +44,7 @@ def build():
         dest = ROOT / 'dist' / 'Smech.app' / 'Contents' / 'MacOS' / 'Smech'
     if not dest.is_file():
         raise SystemExit(f'Ошибка: исполняемый файл не создан: {dest}')
-    print(f'Собрано: {dest}', flush=True)
+    print(f'Built: {dest}', flush=True)
 
 
 if __name__ == '__main__':
